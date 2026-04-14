@@ -1,51 +1,74 @@
-# Face Emotion Classification with Neural Networks
-
-A from-scratch implementation of a single hidden layer neural network in Python for classifying face emotion data, trained with stochastic gradient descent and backpropagation.
+# Face Emotion Classification
 
 ## Overview
+This project builds a complete machine learning pipeline from scratch, progressively improving model performance for face emotion classification using increasingly advanced techniques.
 
-This project implements a feedforward neural network without any deep learning libraries — just NumPy. It classifies facial emotion data from a `.mat` dataset and includes a separate synthetic data example demonstrating the network on two non-linear classification problems.
+Starting from a simple linear model, the project evolves through dimensionality reduction, kernel methods, and nonlinear modeling to capture complex patterns in data.
+
+---
+
+## Pipeline Architecture
+
+### 1. Linear Classification (Baseline)
+- Implemented least squares classifier
+- Evaluated performance using all features vs selected top features
+- Used 8-fold cross validation for performance estimation
+
+**Key Idea:** Establish a simple baseline model
+
+---
+
+### 2. Dimensionality Reduction (SVD)
+- Applied Singular Value Decomposition (SVD)
+- Constructed rank-1 and rank-2 approximations
+- Analyzed reconstruction error and data structure
+
+**Key Idea:** Reduce noise and uncover structure in data
+
+---
+
+### 3. Kernel Methods (Nonlinear Modeling)
+- Built Gaussian kernel classifier
+- Implemented kernel ridge regression
+- Tuned hyperparameters (σ, λ) using cross-validation
+- Visualized nonlinear decision boundaries
+
+**Key Idea:** Transform linear models into nonlinear ones using kernels
+
+---
+
+### 4. Advanced Modeling (Neural Networks)
+- Implemented multi-layer neural network (if included)
+- Trained using gradient-based optimization
+- Compared performance with previous models
+
+**Key Idea:** Learn features automatically from data
+
+---
 
 ## Features
 
-- **Single hidden layer neural network** built entirely with NumPy
-- **Sigmoid activation** for both hidden and output layers
-- **Stochastic gradient descent** with configurable learning rate and epochs
-- **8-fold cross-validation** for evaluating generalization performance
-- **Synthetic data demo** showing the network learning non-linear decision boundaries
+- End-to-end ML pipeline from scratch
+- No high-level ML libraries (manual implementations)
+- Cross-validation and hyperparameter tuning
+- Visualization of decision boundaries and model behavior
+- Both classification and regression tasks
 
-## Dependencies
+---
 
+## Results & Insights
+
+- Linear models provide fast but limited performance  
+- SVD reveals low-dimensional structure in data  
+- Kernel methods achieve near-perfect training accuracy  
+- Cross-validation prevents overfitting  
+- Nonlinear models significantly improve classification performance  
+
+---
+
+## Technologies Used
+
+- Python
 - NumPy
+- SciPy
 - Matplotlib
-- SciPy (`loadmat` for reading `.mat` files)
-
-## Dataset
-
-`face_emotion_data.mat` containing a feature matrix `X` and binary labels `y` for 128 face samples.
-
-## Results
-
-### Face Emotion Classification
-
-- Achieves 0% training error on the full dataset
-- ~96% test accuracy via 8-fold cross-validation (varies slightly due to SGD randomness)
-
-### Synthetic Data Demo
-
-Trains on 10,000 generated samples across two non-linear classification tasks (circular boundary and cubic boundary), demonstrating the network's ability to learn complex decision surfaces.
-
-## Hyperparameters
-
-| Parameter | Value |
-|---|---|
-| Learning rate (`a`) | 0.05 |
-| Hidden neurons (`M`) | 32 |
-| Epochs (`L`) | 200 |
-
-## Structure
-
-| File | Description |
-|---|---|
-| `face_emotion.ipynb` | Main notebook — training, cross-validation, and plots |
-| `face_emotion_data.mat` | Face emotion dataset |
